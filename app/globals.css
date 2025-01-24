@@ -3,19 +3,32 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #F8F8F8;
+  --font-main: #000;
+  --accent-color: #CC3D00;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@font-face {
+  font-family: 'Nauryzredkeds';
+  src: url('/public/fonts/nauryzredkeds-webfont.woff2') format('woff2');
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Montserrat';
+  src: url('/public/fonts/Montserrat-Regular.ttf') format('ttf');
+  font-weight: bold;
+  font-style: normal;
 }
 
 body {
-  color: var(--foreground);
+  scroll-behavior: smooth;
+  color: var(--font-main);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Montserrat';
+}
+
+h2,h3{
+  font-family: 'Nauryzredkeds';
+  color: var(--accent-color);
 }
