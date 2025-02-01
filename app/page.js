@@ -5,9 +5,11 @@ export default function Home() {
     <main>
       <Header />
       <Main />
-      <About />
-      <Events />
-      <Address />
+      <div className="container mx-auto px-5">
+        <About />
+        <Events />
+        <Address />
+      </div>
     </main>
   );
 }
