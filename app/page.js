@@ -1,4 +1,8 @@
-import { About, Address, Events, Header, Main } from "@/components";
+import { About } from "@/components/About";
+import { Address } from "@/components/Address";
+import { Events } from "@/components/Events";
+import { Header } from "@/components/Header";
+import { Main } from "@/components/Main";
 
 export default function Home() {
   return (

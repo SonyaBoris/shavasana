@@ -4,7 +4,7 @@ import { useState, useEffect, useMemo } from 'react'
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel"
 import clsx from 'clsx'
 import { Button } from './ui/button'
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Images } from 'lucide-react';
 import Image from 'next/image'
 
 const AboutCarousel = () => {
@@ -48,20 +48,43 @@ const AboutCarousel = () => {
     }
   }, [api, selectedTab, tabData])
 
+  const slides = [
+    {
+      id: 1,
+      text: "Для глубокого и качественного сна мы приобрели самые лучшие и удобные матрасы, подушки и одеяла. Постельное белье я своими руками прошила с молитвой символом (руной Ингуз ) изобилия и плодородия, чтобы здесь ваше тело максимально насыщалось благостными энергиями. Белоснежное постельное белье окутает негой крепким сном. Картины в комнаты специально по заказу писались известной самарской художницей Зоенькой Древинг. В них такой глубокий смысл и красота, столько энергии и любви. В каждом номере есть свой санузел!",
+      images: ["/images/room1.jpg", "/images/room2.jpg", "/images/room3.jpg"],
+    },
+    {
+      id: 2,
+      text: "У нас есть прекрасный зал для занятий и медитаций с чудесным освещением ️его площадь 80 кв.м. В зале есть настоящий камин на дровах и теплый пол. Есть все необходимое оборудование для занятий.",
+      images: ["/images/hall1.jpg", "/images/hall2.jpg", "/images/hall3.jpg"],
+    },
+    {
+      id: 3,
+      text: "У нас прекрасный банный комплекс, печка на дровах, большая парная и комната отдыха. У нас у единственных в самарской области есть в парной кушетка для парения. Здесь все со знаком эко, а самое приятное, что из бани можно выбегать купаться в снегу!",
+      images: ["/images/bath1.jpg", "/images/bath2.jpg", "/images/bath3.jpg"],
+    },
+    {
+      id: 4,
+      text: "Кухня-столовая очень большая. Тут очень уютно. Здесь можно проводить лекции, мастер классы, сидя на огромном диване. Можно просто подключиться к проводному интернету и работать на хорошей скорости. Здесь много музыкальных инструментов: пианино, укулеле, барабан, глюкофон, поющие чаши.",
+      images: ["/images/bath1.jpg", "/images/bath2.jpg", "/images/bath1.jpg"],
+    }
+  ]
+
   return (
     <div>
       <div className='flex justify-between'>
-        <div className="flex gap-8">
+        <div className="flex md:gap-8 gap-4">
           {tabs.map((tab) => (
             <button
               key={tab}
               onClick={() => setSelectedTab(tab)}>
-              <h2 className={clsx('border-b-[4px] transition',
+              <h2 className={clsx('md:border-b-[4px] border-b-[2px] transition md:text-4xl text-xl',
                 selectedTab === tab ? 'border-accent' : 'text-black border-white')}>{tab}</h2>
             </button>
           ))}
         </div>
-        <div className="flex gap-3">
+        <div className="lg:flex gap-3 hidden">
           <Button
             size="icon"
             variant="outline"
@@ -76,62 +99,22 @@ const AboutCarousel = () => {
           </Button>
         </div>
       </div>
-
       <Carousel setApi={setApi}>
         <CarouselContent>
-          <CarouselItem>
-            <div>
-              <div className='my-4'>Для глубокого и качественного сна мы приобрели самые лучшие и удобные матрасы, подушки и одеяла.
-                <br /> Постельное белье я своими руками прошила с молитвой символом (руной Ингуз ) изобилия и плодородия
-                чтобы здесь ваше тело максимально насыщалось благостными энергиями.
-                <br />Лоскутные покрывала на кровати сделала мастерица из Подмосковья Ольга с любовью и радостью.
-                Белоснежное постельное белье окутает негой крепким сном.
-                <br />Картины в комнаты специально по заказу писались известной самарской художницей Зоенькой Древинг.
-                <br />В них такой глубокий смысл и красота, столько энергии и любви
-                <br /> В каждом номере есть свой санузел!</div>
-              <div className='flex gap-4'>
-                <Image className='rounded flex-1 object-cover w-1/4' src="/images/room1.jpg" width={488} height={326} alt='Фото номера' />
-                <Image className='rounded flex-1 object-cover w-1/4' src="/images/room2.jpg" width={488} height={326} alt='Фото номера' />
-                <Image className='rounded flex-1 object-cover w-1/4' src="/images/room3.jpg" width={488} height={326} alt='Фото номера' />
-              </div>
-            </div>
-          </CarouselItem>
-          <CarouselItem>
-            <div>
-              <div className='my-4'>У нас есть прекрасный зал для занятий и медитаций с чудесным освещением ️его площадь 80 кв.м.
-                <br />В зале есть настоящий камин на дровах и теплый пол.
-                <br />Есть все необходимое оборудование для занятий.</div>
-              <div className='flex gap-4'>
-                <Image className='rounded flex-1 object-cover w-1/4' src="/images/hall1.jpg" width={488} height={326} alt='Фото зала' />
-                <Image className='rounded flex-1 object-cover w-1/4' src="/images/hall2.jpg" width={488} height={326} alt='Фото зала' />
-                <Image className='rounded flex-1 object-cover w-1/4' src="/images/hall3.jpg" width={488} height={326} alt='Фото зала' />
-              </div>
-            </div>
-          </CarouselItem>
-          <CarouselItem>
-            <div>
-              <div className='my-4'>У нас прекрасный банный комплекс, печка на дровах, большая парная и комната отдыха.
-                <br />У нас у единственных в самарской области есть в парной кушетка для парения.
-                <br />Здесь все со знаком эко, а самое приятное, что из бани можно выбегать купаться в снегу!</div>
-              <div className='flex gap-4'>
-                <Image className='rounded flex-1 object-cover w-1/4' src="/images/bath1.jpg" width={550} height={300} alt='Фото бани' />
-                <Image className='rounded flex-1 object-cover w-1/4' src="/images/bath2.jpg" width={550} height={300} alt='Фото бани' />
-              </div>
-            </div>
-          </CarouselItem>
-          <CarouselItem>
-            <div>
-              <div className='my-4'>Кухня-столовая очень большая.
-                <br /> Тут очень уютно. Здесь можно проводить лекции, мастер классы, сидя на огромном диване.
-                <br />Можно просто подключиться к проводному интернету и работать на хорошей скорости.
-                <br />Здесь много музыкальных инструментов: пианино, укулеле, барабан, глюкофон, поющие чаши.</div>
-              <div className='flex gap-4'>
-                <Image className='rounded flex-1 object-cover w-1/4' src="/images/kitchen1.jpg" width={488} height={326} alt='Кухня' />
-                <Image className='rounded flex-1 object-cover w-1/4' src="/images/kitchen2.jpg" width={488} height={326} alt='Кухня' />
-                <Image className='rounded flex-1 object-cover w-1/4' src="/images/kitchen3.jpg" width={488} height={326} alt='Кухня' />
-              </div>
-            </div>
-          </CarouselItem>
+          {
+            slides.map(slide => (
+              <CarouselItem key={slide.id}>
+                <div className='my-4'>
+                  {slide.text}
+                </div>
+                <div className='flex gap-4 lg:flex-row flex-col'>
+                  {slide.images.map((img, index) => (
+                    <Image key={index} className='rounded flex-1 object-cover lg:w-1/4 w-full' src={img} width={488} height={326} alt='' />
+                  ))}
+                </div>
+              </CarouselItem>
+            ))
+          }
         </CarouselContent>
       </Carousel>
     </div>
