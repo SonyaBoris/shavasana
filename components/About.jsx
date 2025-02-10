@@ -34,12 +34,12 @@ export const About = () => {
             Рядом находится питомник растений, где можно купить саженец и посадить его, создав новую рощу.</p>
         </div>
         <div className="w-full">
-          <Image className="rounded" src="/images/detocs.jpg" width={700} height={465} alt="Изображение с медитацией" />
+          <Image className="rounded" src="/images/detocs.jpg" width={700} height={465} alt="Изображение с медитацией" loading="lazy" />
         </div>
       </div>
       <div className="flex my-10 gap-5 items-center flex-col-reverse lg:flex-row">
         <div className="w-full">
-          <Image className="rounded" src="/images/detocs2.jpg" width={700} height={465} alt="Изображение с едой" />
+          <Image className="rounded" src="/images/detocs2.jpg" width={700} height={465} alt="Изображение с едой" loading="lazy" />
         </div>
         <div className="w-full">
           <h2>Живое питание</h2>

@@ -21,7 +21,6 @@
 }
 
 body {
-  scroll-behavior: smooth;
   color: var(--font-main);
   font-family: 'Montserrat';
 }

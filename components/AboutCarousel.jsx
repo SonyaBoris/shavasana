@@ -109,7 +109,7 @@ const AboutCarousel = () => {
                 </div>
                 <div className='flex gap-4 lg:flex-row flex-col'>
                   {slide.images.map((img, index) => (
-                    <Image key={index} className='rounded flex-1 object-cover lg:w-1/4 w-full' src={img} width={488} height={326} alt='' />
+                    <Image key={index} className='rounded flex-1 object-cover lg:w-1/4 w-full' src={img} width={488} height={326} alt='' loading="lazy" />
                   ))}
                 </div>
               </CarouselItem>
