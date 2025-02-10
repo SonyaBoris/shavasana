@@ -10,7 +10,7 @@ export const EventPast = () => {
 
   const MemoizedCarouselItem = React.memo(({ img }) => (
     <CarouselItem key={img.id} className="md:basis-1/3 basis">
-      <Image src={img.link} width={400} height={600} alt='img' loading="lazy" />
+      <Image src={img.link} width={400} height={600} alt='img'  />
     </CarouselItem>
   ));
 
