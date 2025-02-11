@@ -4,7 +4,7 @@ import { useState, useEffect, useMemo } from 'react'
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel"
 import clsx from 'clsx'
 import { Button } from './ui/button'
-import { ChevronLeft, ChevronRight, Images } from 'lucide-react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import Image from 'next/image'
 
 const AboutCarousel = () => {
@@ -67,7 +67,7 @@ const AboutCarousel = () => {
     {
       id: 4,
       text: "Кухня-столовая очень большая. Тут очень уютно. Здесь можно проводить лекции, мастер классы, сидя на огромном диване. Можно просто подключиться к проводному интернету и работать на хорошей скорости. Здесь много музыкальных инструментов: пианино, укулеле, барабан, глюкофон, поющие чаши.",
-      images: ["/images/bath1.jpg", "/images/bath2.jpg", "/images/bath1.jpg"],
+      images: ["/images/kitchen1.jpg", "/images/kitchen2.jpg", "/images/kitchen3.jpg"],
     }
   ]
 

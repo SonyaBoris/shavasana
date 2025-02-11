@@ -5,12 +5,17 @@ import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carouse
 import { Button } from './ui/button';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import Image from 'next/image';
+import Loader from './Loader';
 
 export const EventPast = () => {
+  const [loaded, setLoaded] = useState(false);
 
   const MemoizedCarouselItem = React.memo(({ img }) => (
-    <CarouselItem key={img.id} className="md:basis-1/3 basis">
-      <Image src={img.link} width={400} height={600} alt='img'  />
+    <CarouselItem key={img.id} className="relative md:basis-1/3 basis">
+      {!loaded && (
+        <Loader />
+      )}
+      <Image src={img.link} width={400} height={600} alt='img' onLoadingComplete={() => setLoaded(true)} className={`transition-opacity duration-500 ${loaded ? 'opacity-100' : 'opacity-0'}`} />
     </CarouselItem>
   ));
 
