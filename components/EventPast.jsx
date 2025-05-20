@@ -20,6 +20,7 @@ export const EventPast = () => {
   ));
 
   const [api, setApi] = useState(undefined)
+  const [api2, setApi2] = useState(undefined)
 
   const handleNext = useCallback(() => {
     if (api) {
@@ -33,6 +34,18 @@ export const EventPast = () => {
     }
   }, [api]);
 
+    const handleNext2 = useCallback(() => {
+    if (api) {
+      api2.scrollNext(false)
+    }
+  }, [api2]);
+
+  const handlePrev2 = useCallback(() => {
+    if (api) {
+      api2.scrollPrev(false)
+    }
+  }, [api2]);
+
   const images = [
     { id: 1, link: "/images/ny1.jpg" },
     { id: 2, link: "/images/ny2.jpg" },
@@ -43,6 +56,15 @@ export const EventPast = () => {
     { id: 7, link: "/images/ny7.jpg" },
     { id: 8, link: "/images/ny8.jpg" },
     { id: 9, link: "/images/ny9.jpg" }
+  ]
+
+  const images2 = [
+    { id: 1, link: "/images/detocs17.jpg" },
+    { id: 2, link: "/images/detocs16.jpg" },
+    { id: 3, link: "/images/detocs15.jpg" },
+    { id: 4, link: "/images/detocs14.jpg" },
+    { id: 5, link: "/images/detocs13.jpg" },
+    { id: 6, link: "/images/detocs1.jpg" },
   ]
 
   return (
@@ -72,6 +94,31 @@ export const EventPast = () => {
             size="icon"
             variant="outline"
             onClick={handleNext}>
+            <ChevronRight />
+          </Button>
+        </div>
+      </div>
+      <div>
+        <h2>Детокс тур</h2>
+        <p className='mb-5'>Красота внутри, красота снаружи!</p>
+        <Carousel setApi={setApi2}>
+          <CarouselContent>
+            {images2.map(img => (
+              <MemoizedCarouselItem key={img.id} img={img} />
+            ))}
+          </CarouselContent>
+        </Carousel>
+        <div className="flex gap-3 my-5">
+          <Button
+            size="icon"
+            variant="outline"
+            onClick={handlePrev2}>
+            <ChevronLeft />
+          </Button>
+          <Button
+            size="icon"
+            variant="outline"
+            onClick={handleNext2}>
             <ChevronRight />
           </Button>
         </div>

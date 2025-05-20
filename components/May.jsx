@@ -3,11 +3,11 @@ import Image from "next/image";
 const May = () => {
   return (
     <section>
-      <div className="flex lg:flex-row flex-col gap-5 items-center justify-between my-10">
-        <div className=" lg:w-[60%] w-full">
-          <h2>Проведите майские праздники в нашем  ретритном центре Шавасана</h2>
-          <p className="mb-3">Май — это время, когда природа пробуждается, а дом около Волги становится прекрасным местом для отдыха.
-            И мы рады предложить вам уникальную возможность, провести время в уютных номерах нашего ретритного центра, где вы сможете насладиться спокойствием и красотой  природы нашей полосы. </p>
+      <div className="flex flex-col gap-5 items-center justify-between my-10  w-full">
+        <div className="my-10">
+          <h2>Проведите лето в нашем  ретритном центре Шавасана</h2>
+          <p className="mb-3">Дом около Волги становится прекрасным местом для отдыха.
+            И мы рады предложить вам уникальную возможность, провести время в уютных номерах нашего ретритного центра, где вы сможете насладиться спокойствием и красотой  природы нашей полосы.</p>
           <h3 className="mb-3">Вы можете забронировать просто номер, а досуг мы вам обеспечим</h3>
           <p className="mb-3">В это время года особенно впечатляют рассветы и закаты, которые становятся самыми красивыми и запоминающимися.
             У нас есть потрясающие природные фотозоны для любителей красивых фоточек</p>
@@ -16,8 +16,11 @@ const May = () => {
           <p className="mb-10">Не упустите возможность встретить теплую весну в нашем ретритном центре Шавасана! Забронируйте свой отдых уже сегодня и получите баню в подарок.</p>
           <a className='bg-[var(--accent-color)] text-white p-4 rounded-2xl my-10' href="tel:+79879488117">Забронировать</a>
         </div>
-        <div>
-          <Image className="rounded w-full h-full" src="/images/may.jpg" width={700} height={465} />
+        <div className="flex justify-between">
+          <Image className="rounded max-w-[30%] h-full lg:block hidden" src="/images/may1.jpg" width={700} height={465} />
+          <Image className="rounded w-full lg:max-w-[30%] h-full" src="/images/may2.jpg" width={700} height={465} />
+          <Image className="rounded max-w-[30%] h-full lg:block hidden" src="/images/may3.jpg" width={700} height={465} />
+
         </div>
       </div>
     </section>

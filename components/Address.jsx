@@ -4,8 +4,8 @@ import { CarFront, MapPin, Phone, Sailboat, TrainFront } from 'lucide-react';
 
 export const Address = () => {
   return (
-    <section id="adress" className="flex gap-6">
-      <Image className="hidden lg:block" src="/images/center.jpg" width={600} height={901.88} alt="Фото дома" />
+    <section id="adress" className="flex gap-8">
+      <Image className="hidden lg:block" src="/images/center2.jpg" width={600} height={901.88} alt="Фото дома" />
       <div>
         <h2>Адрес</h2>
         <div className="flex gap-5 mb-10">

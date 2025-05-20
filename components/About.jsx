@@ -25,7 +25,7 @@ export const About = () => {
         </div>
       </div>
       <AboutCarousel />
-      <div className="flex my-10 gap-5 items-center flex-col lg:flex-row">
+      <div className="flex my-20 gap-5 items-center flex-col lg:flex-row">
         <div className="w-full">
           <h2>Детокс программы</h2>
           <p className="mb-4">Мы будем проводить программы очищения организма природными средствами!</p>
