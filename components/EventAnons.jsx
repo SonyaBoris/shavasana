@@ -32,22 +32,10 @@ const EventAnons = () => {
   }, []);
 
   const events = useMemo(() => [
-    {
-      id: 1,
-      date: "13–15 декабря",
-      title: "Ретрит по практике раскрытия сердца",
-      desc: "Ведущая ретрита — Нандана. Послушница, проживающая в итальянском ашраме рядом с Гуру. Руководитель союза инструкторов Всемирной Общины Санатана Дхармы",
-      about: "Приглашаем всех, у кого есть возможность приехать и погрузиться на три дня в мир практики и духовной эволюции",
-      plan: [
-        "Практика, раскрывающая духовное сердце и анахата-чакру",
-        "Дает опору, спокойствие и стабильность",
-        "Гармонизирует все сферы жизни",
-        "Является «фундаментом» для глубокой духовной трансформации"
-      ]
-    },
+
     {
       id: 2,
-      date: "31 декабря - 2 января",
+      date: "31.12 - 2.01",
       title: "Новый год в Шавасане",
       desc: "Приезжайте к нам! Напоминаем, что 31 декабря мы встречаем Новый год в Шавасане. И для нас он особенный — нам исполняется ровно один год. Год, как мы держим это пространство для тех, кто ищет не внешнего блеска, а внутреннего света.",
       about: "Мы не будем шуметь и устраивать фейерверки. Мы выбрали другой Новый год — душевный, тёплый, настоящий.",
@@ -60,7 +48,7 @@ const EventAnons = () => {
     },
     {
       id: 3,
-      date: "С 19 по 26 января",
+      date: "19.01 - 26.01",
       title: "Детокс-ретрит",
       desc: "А какой подарок ты бы подарила себе на праздник? Я всё чаще склоняюсь к тому, что лучший подарок — это забота о себе. Поэтому рекомендую экологичные подарки, чтобы они несли наполнение и здоровье.",
       about: "Даже если ты не захотела обделять себя в еде на новогодние праздники, то можно подстраховаться заранее подаренным себе январским недельным детокс туром",
@@ -77,21 +65,8 @@ const EventAnons = () => {
       ]
     },
     {
-      id: 4,
-      date: "23 декабря",
-      title: "День открытых дверей в ретрит-центре Шавасана",
-      desc: "При встрече мастеров всегда рождается нечто большее, чем просто сотрудничество. Мы верим в силу живых связей. В энергии, которая приходит, когда рядом люди на одной волне.",
-      about: "Именно поэтому мы с радостью приглашаем мастеров, фасилитаторов, организаторов и тех, кто работает с людьми, 23 декабря в «Шавасану» на день открытых дверей.",
-      plan: [
-        "12:00 — встреча и обед.Накормим с душой, как любим: витграс, проростки, хлеб на закваске, натуральные сладости и веганские блюда, которые насыщают, а не перегружают.",
-        "После погуляем по пространству. Покажем залы, баню, номера, сад, уединённые тропинки и места силы.",
-        "15:00 — баня с пармастером. Настоящая, на дровах.",
-        "Если после захочется остаться, с радостью предоставим вам скидку 30% на проживание и 20 % на завтрак Без спешки, всё можно прочувствовать."
-      ]
-    },
-    {
       id: 5,
-      date: "15-22 февраля",
+      date: "15.02 - 22.02",
       title: "СИЯЮЩИЙ ДЕТОКС: Голодай, не голодая",
       desc: "Это не просто ретрит — это полноценное очищение, оздоровление и омоложение в безопасном формате, где тебя ведут опытные практики с международным уровнем ",
       about: "Юрий Рахубин — основатель бренда, наш внутренний мотор и проводник в мир живого питания и глубокой телесной мудрости. Именно поэтому он не просто создаёт продукты, которые работают, — он собирает вокруг себя пространство, где можно перезагрузить тело, разум и энергию.",
@@ -107,21 +82,38 @@ const EventAnons = () => {
 
   return (
     <>
-      <Carousel setApi={setApi}>
-        <CarouselContent className="px-2">
+      <Carousel setApi={setApi} opts={{ align: "start", slidesToScroll: 1 }}>
+        <CarouselContent className="px-1 md:px-2">
           {events.map(event => (
             <CarouselItem
               key={event.id}
-              className={`lg:basis-1/4 md:basis-1/3 basis-1/2 mx-2 p-4 border rounded cursor-pointer flex flex-col justify-between ${selectedEvent?.id === event.id ? 'border-[var(--accent-color)]' : 'border-gray-300'}`}
-              onClick={() => handleSelectEvent(event)}
-            >
-              <h2 className='md:text-2xl text-base'>{event.title}</h2>
-              <span>{event.date}</span>
+              className="basis-1/2 px-2 sm:basis-[46%] md:basis-[48%] lg:basis-1/3 xl:basis-1/4 p-3 sm:p-5">
+              <div
+                className={`group flex h-full cursor-pointer flex-col justify-between rounded-2xl border p-3 sm:p-4 transition ${
+                  selectedEvent?.id === event.id
+                    ? 'border-[hsl(var(--accent-color))] bg-white'
+                    : 'border-white/70 bg-white/70 hover:border-gray-200'
+                }`}
+                onClick={() => handleSelectEvent(event)}
+              >
+                <div className="flex flex-col gap-2 sm:gap-3">
+                  <span className="text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground sm:px-3 sm:py-1 sm:text-[10px] sm:tracking-[0.14em]">
+                    {event.date}
+                  </span>
+                  <h3 className='text-base font-semibold leading-snug text-foreground text-balance sm:text-lg md:text-xl'>
+                    {event.title}
+                  </h3>
+                  <p className="hidden text-sm text-muted-foreground sm:block">{event.desc}</p>
+                </div>
+                <span className="mt-3 inline-flex items-center gap-2 text-xs font-semibold text-[hsl(var(--accent-color))] transition group-hover:translate-x-1 sm:mt-4 sm:text-sm">
+                  Подробнее
+                </span>
+              </div>
             </CarouselItem>
           ))}
         </CarouselContent>
       </Carousel>
-      <div className="flex gap-3 my-5">
+      <div className="flex gap-3 py-3">
         <Button
           size="icon"
           variant="outline"
@@ -136,18 +128,35 @@ const EventAnons = () => {
         </Button>
       </div>
       {selectedEvent && (
-        <div>
-          <h2>{selectedEvent.title}</h2>
-          <p className='font-bold mb-5'>{selectedEvent.date}</p>
-          <p className='mb-5'>{selectedEvent.desc}</p>
-          <p className='mb-5'>{selectedEvent.about}</p>
-          <p className='text-[var(--accent-color)] font-bold mb-5'>Что даст практика?</p>
-          <ul className='mb-10'>
-            {selectedEvent.plan.map((item, index) => (
-              <li key={index}>- {item}</li>
-            ))}
-          </ul>
-          <a className='bg-[var(--accent-color)] text-white p-4 rounded-2xl' href="tel:+79879488117">Записаться</a>
+        <div className="mt-2 rounded-3xl border border-white/70 bg-secondary/60 p-6 shadow-sm md:p-8">
+          <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
+            <div>
+              <h2 className="mb-2 text-2xl font-semibold text-foreground">{selectedEvent.title}</h2>
+              <p className='text-sm font-semibold uppercase tracking-[0.16em] text-muted-foreground'>{selectedEvent.date}</p>
+            </div>
+            <a
+              className='inline-flex items-center justify-center rounded-full bg-[hsl(var(--accent-color))] px-5 py-3 text-sm font-semibold text-white shadow-[0_12px_30px_rgba(214,99,50,0.25)] transition hover:-translate-y-0.5 hover:bg-[hsl(var(--accent-color))]/90'
+              href="tel:+79879488117"
+            >
+              Записаться
+            </a>
+          </div>
+          <div className="mt-4 grid gap-4 md:grid-cols-[1fr_1.2fr] md:items-start">
+            <div className="space-y-3 text-muted-foreground">
+              <p>{selectedEvent.desc}</p>
+              <p>{selectedEvent.about}</p>
+            </div>
+            <div>
+              <p className='mb-3 text-sm font-semibold uppercase tracking-[0.16em] text-[hsl(var(--accent-color))]'>Что даст практика</p>
+              <ul className='space-y-2 text-foreground'>
+                {selectedEvent.plan.map((item, index) => (
+                  <li key={index} className="flex gap-3 rounded-xl bg-white/80 px-4 py-3 shadow-[0_6px_20px_rgba(15,30,25,0.05)]">
+                    <span className="text-sm leading-6">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
         </div>
       )}
     </>

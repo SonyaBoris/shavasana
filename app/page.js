@@ -9,13 +9,13 @@ import May from "@/components/May";
 
 export default function Home() {
   return (
-    <main>
+    <main id="top" className="min-h-screen">
       <Header />
       <Main />
-      <div className="container mx-auto px-5">
+      <div className="site-container space-y-16 md:space-y-24">
         <About />
         <Events />
-        <May />
+        {/* <May /> */}
         <Fitness />
         <Address />
       </div>

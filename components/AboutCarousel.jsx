@@ -26,19 +26,17 @@ const AboutCarousel = () => {
   }
 
   const handleNext = () => {
-    if (api) {
-      api.scrollNext(false)
-      const nextIndex = (tabData[selectedTab] + 1) % tabs.length
-      updateTabBySlideIndex(nextIndex)
-    }
+    if (!api) return
+    api.scrollNext(false)
+    const nextIndex = (tabData[selectedTab] + 1) % tabs.length
+    updateTabBySlideIndex(nextIndex)
   }
 
   const handlePrev = () => {
-    if (api) {
-      api.scrollPrev(false)
-      const prevIndex = (tabData[selectedTab] - 1 + tabs.length) % tabs.length
-      updateTabBySlideIndex(prevIndex)
-    }
+    if (!api) return
+    api.scrollPrev(false)
+    const prevIndex = (tabData[selectedTab] - 1 + tabs.length) % tabs.length
+    updateTabBySlideIndex(prevIndex)
   }
 
   useEffect(() => {
@@ -47,6 +45,18 @@ const AboutCarousel = () => {
       api.scrollTo(slideIndex, false, 'smooth')
     }
   }, [api, selectedTab, tabData])
+
+  useEffect(() => {
+    if (!api) return
+    const syncTabWithSlide = () => {
+      const index = api.selectedScrollSnap()
+      updateTabBySlideIndex(index)
+    }
+    api.on("select", syncTabWithSlide)
+    return () => {
+      api.off("select", syncTabWithSlide)
+    }
+  }, [api, tabData])
 
   const slides = [
     {
@@ -72,44 +82,43 @@ const AboutCarousel = () => {
   ]
 
   return (
-    <div>
-      <div className='flex justify-between'>
-        <div className="flex md:gap-8 gap-4">
+    <div className="space-y-6">
+      <div className='flex flex-col gap-4 md:flex-row md:items-center md:justify-between'>
+        <div className="space-y-2">
+          <p className="eyebrow">Пространство центра</p>
+          <h3 className="text-2xl font-semibold text-foreground">Номера, зал, баня и кухня</h3>
+          <p className="text-muted-foreground">Загляните в ключевые зоны центра: теплые спальни, зал с камином, просторную баню и кухню с авторской керамикой.</p>
+        </div>
+        <div className="flex w-full flex-wrap items-center gap-2 md:w-auto md:flex-nowrap md:justify-end">
           {tabs.map((tab) => (
             <button
               key={tab}
+              aria-pressed={selectedTab === tab}
+              className={clsx(
+                "min-w-[130px] whitespace-nowrap rounded-full border px-4 py-2 text-sm font-semibold transition md:min-w-[120px]",
+                selectedTab === tab
+                  ? "border-[hsl(var(--accent-color))] bg-[hsl(var(--accent-color))] text-white shadow-[0_6px_24px_rgba(214,99,50,0.25)]"
+                  : "border-white/70 bg-white/70 text-foreground hover:bg-white"
+              )}
               onClick={() => setSelectedTab(tab)}>
-              <h2 className={clsx('md:border-b-[4px] border-b-[2px] transition md:text-4xl text-xl',
-                selectedTab === tab ? 'border-accent' : 'text-black border-white')}>{tab}</h2>
+              {tab}
             </button>
           ))}
         </div>
-        <div className="lg:flex gap-3 hidden">
-          <Button
-            size="icon"
-            variant="outline"
-            onClick={handlePrev}>
-            <ChevronLeft />
-          </Button>
-          <Button
-            size="icon"
-            variant="outline"
-            onClick={handleNext}>
-            <ChevronRight />
-          </Button>
-        </div>
       </div>
       <Carousel setApi={setApi}>
-        <CarouselContent>
+        <CarouselContent className="px-1">
           {
             slides.map(slide => (
-              <CarouselItem key={slide.id}>
-                <div className='my-4'>
+              <CarouselItem key={slide.id} className="space-y-4">
+                <div className='rounded-2xl border border-white/70 bg-secondary/60 p-5 text-muted-foreground shadow-sm'>
                   {slide.text}
                 </div>
-                <div className='flex gap-4 lg:flex-row flex-col'>
+                <div className='grid gap-4 lg:grid-cols-3'>
                   {slide.images.map((img, index) => (
-                    <Image key={index} className='rounded flex-1 object-cover lg:w-1/4 w-full' src={img} width={488} height={326} alt=''  />
+                    <div key={index} className='overflow-hidden rounded-2xl border border-white/70 bg-white/70 shadow-sm'>
+                      <Image className='h-full w-full object-cover' src={img} width={488} height={326} alt=''  />
+                    </div>
                   ))}
                 </div>
               </CarouselItem>
@@ -117,6 +126,14 @@ const AboutCarousel = () => {
           }
         </CarouselContent>
       </Carousel>
+      <div className="flex justify-end gap-3">
+        <Button size="icon" variant="outline" onClick={handlePrev}>
+          <ChevronLeft />
+        </Button>
+        <Button size="icon" variant="outline" onClick={handleNext}>
+          <ChevronRight />
+        </Button>
+      </div>
     </div>
   );
 }

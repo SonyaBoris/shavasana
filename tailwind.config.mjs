@@ -13,9 +13,9 @@ export default {
   			foreground: 'hsl(var(--foreground))',
   			card: {
   				DEFAULT: 'hsl(var(--card))',
-  				foreground: 'hsl(var(--card-foreground))'
-  			},
-  			popover: {
+ 				foreground: 'hsl(var(--card-foreground))'
+ 			},
+ 			popover: {
   				DEFAULT: 'hsl(var(--popover))',
   				foreground: 'hsl(var(--popover-foreground))'
   			},
@@ -33,7 +33,7 @@ export default {
   			},
   			accent: {
   				DEFAULT: 'hsl(var(--accent-color))',
-  				foreground: 'hsl(var(--accent--color))'
+  				foreground: 'hsl(var(--primary-foreground))'
   			},
   			destructive: {
   				DEFAULT: 'hsl(var(--destructive))',
